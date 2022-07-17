@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import {
@@ -31,7 +30,6 @@ import { DashboardComponent } from './dashboard.component';
     NbProgressBarModule,
     NgxEchartsModule,
     NgxChartsModule,
-    BrowserModule,
     HttpClientModule
   ],
   declarations: [
