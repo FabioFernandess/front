@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-header>
+    Fresadoras Cadastradas
+  </nb-card-header>
+
+  <nb-card-body>
+    <p>
+      <button nbButton status="primary" (click)="novaFresadora()">Novo</button>
+    </p>
+    <ng2-smart-table [settings]="settings" [source]="source" (custom)="onCustomAction($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
