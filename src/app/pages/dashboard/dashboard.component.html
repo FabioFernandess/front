@@ -1,22 +1,21 @@
-<div class="row">
-  <div class="col-md-4 col-sm-4 col-lg-3">
-    <nb-card style="cursor:pointer" (click)="historico(1)" style="text-align:center">
+<div class="row" *ngIf="fresadoras; else error">
+  <div *ngFor="let fresadora of fresadoras" class="col-md-4 col-sm-4 col-lg-3">
+    <nb-card style="cursor:pointer" (click)="historico(fresadora.id)" style="text-align:center">
       <nb-card-header>
-        <nb-icon icon="checkmark-circle-2-outline" pack="eva" style="font-size:7rem;color: #339900;"></nb-icon>
+        <nb-icon *ngIf="fresadora.status == 'O'" icon="checkmark-circle-2-outline" pack="eva" style="font-size:7rem;color: #339900;"></nb-icon>
+        <nb-icon *ngIf="fresadora.status == null" icon="close-square-outline" pack="eva" style="font-size:7rem;color: #797979;"></nb-icon>
+        <nb-icon *ngIf="fresadora.status == 'F'"icon="alert-triangle-outline" pack="eva" style="font-size:7rem;color: #cc3300;"></nb-icon>
+
       </nb-card-header>
       <nb-card-body>
-        <b>Fresadora 1</b>
-      </nb-card-body>
-    </nb-card>
-  </div>
-  <div class="col-md-4 col-sm-4 col-lg-3">
-    <nb-card style="cursor:pointer" (click)="historico(2)" style="text-align:center">
-      <nb-card-header>
-        <nb-icon icon="alert-triangle-outline" pack="eva" style="font-size:7rem;color: #cc3300;"></nb-icon>
-      </nb-card-header>
-      <nb-card-body>
-        <b>Fresadora 2</b>
+        <b>{{fresadora.nome}}</b>
       </nb-card-body>
     </nb-card>
   </div>
 </div>
+
+<ng-template #error>
+  <nb-alert status="danger" >
+    Algo de errado aconteceu ao listar as fresadoras!
+  </nb-alert>
+</ng-template>

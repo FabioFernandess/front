@@ -6,7 +6,7 @@ import { GlobalConstants } from '../../../common/global-constants';
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardService {
+export class HistoricoService {
 
   url = GlobalConstants.apiURL; // api rest fake
 
@@ -18,49 +18,16 @@ export class DashboardService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*','Referrer-Policy': 'no-referrer' })
   }
 
-  // Obtem as fresadoras pela api
-  getFresadoras(): Observable<any> {
-    return this.httpClient.get<any>(this.url+"listarFresadoras")
+  // Obtem historico pela api
+  getHistorico(id): Observable<any> {
+
+    return this.httpClient.get<any>(this.url+"buscarHistorico/"+id)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
-//   // Obtem um carro pelo id
-//   getCarById(id: number): Observable<Car> {
-//     return this.httpClient.get<Car>(this.url + '/' + id)
-//       .pipe(
-//         retry(2),
-//         catchError(this.handleError)
-//       )
-//   }
 
-//   // salva um carro
-//   saveCar(car: Car): Observable<Car> {
-//     return this.httpClient.post<Car>(this.url, JSON.stringify(car), this.httpOptions)
-//       .pipe(
-//         retry(2),
-//         catchError(this.handleError)
-//       )
-//   }
-
-//   // utualiza um carro
-//   updateCar(car: Car): Observable<Car> {
-//     return this.httpClient.put<Car>(this.url + '/' + car.id, JSON.stringify(car), this.httpOptions)
-//       .pipe(
-//         retry(1),
-//         catchError(this.handleError)
-//       )
-//   }
-
-//   // deleta um carro
-//   deleteCar(car: Car) {
-//     return this.httpClient.delete<Car>(this.url + '/' + car.id, this.httpOptions)
-//       .pipe(
-//         retry(1),
-//         catchError(this.handleError)
-//       )
-//   }
 
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {

@@ -9,24 +9,24 @@ import { DashboardService } from './service/dashboard.services';
 export class DashboardComponent {
   
  
-  cars: any[];
+  fresadoras: any[];
 
   constructor(private router: Router,private dashboardService: DashboardService) { 
   }
 
  
   ngOnInit() {
-    this.getCars();
+    this.getFresadoras();
   }
 
-  getCars() {
-    this.dashboardService.getCars().subscribe((cars: any[]) => {
-      this.cars = cars;
-      console.log(this.cars)
+  getFresadoras() {
+    this.dashboardService.getFresadoras().subscribe((fresadoras: any[]) => {
+      this.fresadoras = fresadoras;
+      console.log(this.fresadoras)
     });
   }
   historico(idFresadora: any) {
-    this.router.navigate(['/pages/historico']);
+    this.router.navigate(['/pages/historico'],{ queryParams: { id: idFresadora } });
   }
 }
 

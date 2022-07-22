@@ -12,8 +12,9 @@ import { SeoService } from './@core/utils/seo.service';
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
-
+  urlApi
   constructor(private analytics: AnalyticsService, private seoService: SeoService) {
+    this.urlApi = 'http://172.26.60.31:5000/'
   }
 
   ngOnInit(): void {

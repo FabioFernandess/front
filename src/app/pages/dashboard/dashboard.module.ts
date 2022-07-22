@@ -10,6 +10,7 @@ import {
   NbIconModule,
   NbSelectModule,
   NbListModule,
+  NbAlertModule,
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -30,7 +31,8 @@ import { DashboardComponent } from './dashboard.component';
     NbProgressBarModule,
     NgxEchartsModule,
     NgxChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    NbAlertModule
   ],
   declarations: [
     DashboardComponent,

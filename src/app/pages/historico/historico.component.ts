@@ -3,6 +3,9 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { NbDialogService } from '@nebular/theme';
 import { ChartDialogComponent } from './chart-dialog/chart-dialog.component';
 import { ChartModule } from 'angular2-chartjs';
+import { HistoricoService } from './service/historico.services';
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
 
 @Component({
   selector: 'ngx-historico',
@@ -15,23 +18,23 @@ export class HistoricoComponent {
 
     actions: {
       custom: [
-       
+
         {
           name: 'editAction',
           title: '<i class="ion-search" title="Visualizar"></i>'
         },
-        
+
       ],
       add: false,
-      edit:false,
+      edit: false,
       delete: false,
     },
     columns: {
-      data: {
+      data_analise: {
         title: 'Data',
         type: 'string',
       },
-      nome: {
+      nome_fresadora: {
         title: 'Nome',
         type: 'string',
       },
@@ -44,37 +47,40 @@ export class HistoricoComponent {
 
   //da pra usar serverdatasource
   source: LocalDataSource = new LocalDataSource();
+  data: any[];
+  idFresadora: number;
 
-  constructor(private dialogService: NbDialogService) {
-    const data = [
-      {
-        data: '22/03/2022 14:54:00',
-        nome: 'Fresadora 1',
-        status: 'ATENÇÂO',
-      },
-      {
-        data: '21/03/2022 14:54:00',
-        nome: 'Fresadora 1',
-        status: 'OK',
-      },
-      {
-        data: '20/03/2022 14:54:00',
-        nome: 'Fresadora 2',
-        status: 'OK',
-      },
-      {
-        data: '19/03/2022 14:54:00',
-        nome: 'Fresadora 2',
-        status: 'OK',
-      },
+  constructor(private dialogService: NbDialogService, private historicoService: HistoricoService, private route: ActivatedRoute) {
 
-    ];
-    this.source.load(data);
   }
 
+  ngOnInit() {
+    // this.route.queryParams
+    //   .filter(params => params.order)
+    //   .subscribe(params => {
+    //     console.log(params); // { order: "popular" }
+
+    //     this.idFresadora = params.id;
+    //     console.log(params); // popular
+    //   }
+    //   );
+      this.getFresadoras(null);
+  }
+
+
+
+  getFresadoras(id) {
+    this.historicoService.getHistorico(id).subscribe((analises: any[]) => {
+      this.data = analises;
+      this.source.load(this.data);
+
+    });
+  }
+
+
   onCustomAction(event) {
-    console.log ( event.action) 
-   
+    console.log(event.action)
+
     this.dialogService.open(ChartDialogComponent, {
       context: {
         title: '22/03/2022 14:54:00 - Fresadora 1',
