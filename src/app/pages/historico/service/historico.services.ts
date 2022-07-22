@@ -20,7 +20,6 @@ export class HistoricoService {
 
   // Obtem historico pela api
   getHistorico(id): Observable<any> {
-
     return this.httpClient.get<any>(this.url+"buscarHistorico/"+id)
       .pipe(
         retry(2),

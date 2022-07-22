@@ -48,28 +48,21 @@ export class HistoricoComponent {
   //da pra usar serverdatasource
   source: LocalDataSource = new LocalDataSource();
   data: any[];
-  idFresadora: number;
+  idFresadora: any;
 
   constructor(private dialogService: NbDialogService, private historicoService: HistoricoService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    // this.route.queryParams
-    //   .filter(params => params.order)
-    //   .subscribe(params => {
-    //     console.log(params); // { order: "popular" }
-
-    //     this.idFresadora = params.id;
-    //     console.log(params); // popular
-    //   }
-    //   );
-      this.getFresadoras(null);
+    this.idFresadora = this.route.snapshot.queryParamMap.get('id');
+    this.getHistorico(this.idFresadora);
   }
 
 
 
-  getFresadoras(id) {
+  getHistorico(id) {
+    console.log(id)
     this.historicoService.getHistorico(id).subscribe((analises: any[]) => {
       this.data = analises;
       this.source.load(this.data);
