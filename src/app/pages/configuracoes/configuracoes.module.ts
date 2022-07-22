@@ -18,6 +18,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { ThemeModule } from '../../@theme/theme.module';
 import { ConfiguracoesComponent } from './configuracoes.component';
 import { ModalNovoComponent } from './modal-novo/modal-novo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -35,6 +36,8 @@ import { ModalNovoComponent } from './modal-novo/modal-novo.component';
     Ng2SmartTableModule,
     NbDialogModule,
     NbInputModule,
+    FormsModule, 
+    ReactiveFormsModule
   ],
   declarations: [
     ConfiguracoesComponent,

@@ -22,7 +22,6 @@ export class DashboardComponent {
   getFresadoras() {
     this.dashboardService.getFresadoras().subscribe((fresadoras: any[]) => {
       this.fresadoras = fresadoras;
-      console.log(this.fresadoras)
     });
   }
   historico(idFresadora: any) {

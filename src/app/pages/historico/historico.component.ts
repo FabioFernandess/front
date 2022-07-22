@@ -62,7 +62,6 @@ export class HistoricoComponent {
 
 
   getHistorico(id) {
-    console.log(id)
     this.historicoService.getHistorico(id).subscribe((analises: any[]) => {
       this.data = analises;
       this.source.load(this.data);
