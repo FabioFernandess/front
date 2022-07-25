@@ -1,4 +1,4 @@
 export class GlobalConstants {
-    public static apiURL: string = "http://172.26.60.31:5000/";
+    public static apiURL: string = "http://127.0.0.1:5000/";
       
 }

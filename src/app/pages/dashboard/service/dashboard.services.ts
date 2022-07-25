@@ -22,7 +22,7 @@ export class DashboardService {
   getFresadoras(): Observable<any> {
     return this.httpClient.get<any>(this.url+"listarFresadoras")
       .pipe(
-        retry(2),
+        
         catchError(this.handleError))
   }
 
@@ -30,7 +30,7 @@ export class DashboardService {
 //   getCarById(id: number): Observable<Car> {
 //     return this.httpClient.get<Car>(this.url + '/' + id)
 //       .pipe(
-//         retry(2),
+//         
 //         catchError(this.handleError)
 //       )
 //   }
@@ -39,7 +39,7 @@ export class DashboardService {
 //   saveCar(car: Car): Observable<Car> {
 //     return this.httpClient.post<Car>(this.url, JSON.stringify(car), this.httpOptions)
 //       .pipe(
-//         retry(2),
+//         
 //         catchError(this.handleError)
 //       )
 //   }

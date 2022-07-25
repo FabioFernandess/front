@@ -22,7 +22,7 @@ export class HistoricoService {
   getHistorico(id): Observable<any> {
     return this.httpClient.get<any>(this.url+"buscarHistorico/"+id)
       .pipe(
-        retry(2),
+        
         catchError(this.handleError))
   }
 

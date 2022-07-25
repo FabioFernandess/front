@@ -15,7 +15,7 @@ import 'rxjs/add/operator/filter';
 export class HistoricoComponent {
 
   settings = {
-
+    columnTitle: 'Ações',
     actions: {
       custom: [
 

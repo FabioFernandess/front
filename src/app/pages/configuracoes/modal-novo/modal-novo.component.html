@@ -1,5 +1,5 @@
 <nb-card>
-  <nb-card-header>Nova Fresadora</nb-card-header>
+  <nb-card-header>{{title}}<strong *ngIf="nomeFresadoraEdit.length >0">: {{nomeFresadoraEdit}}</strong></nb-card-header>
   <nb-card-body>
     <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="form-horizontal">
       <div class="form-group row">
@@ -17,7 +17,8 @@
       <div class="form-group row">
         <label for="valor" class="label col-sm-3 form-control-label">Valor</label>
         <div class="col-sm-9">
-          <input type="number" nbInput fullWidth id="valor" placeholder="Valor" formControlName="valor" min="0" step="1">
+          <input type="number" nbInput fullWidth id="valor" placeholder="Valor" formControlName="valor" min="0"
+            step="1">
           <div *ngIf="submit && form.controls['valor'].invalid && form.controls['valor'].touched"
             class="alert alert-danger">
             <div *ngIf="submit && form.controls['valor'].errors.required">
@@ -29,13 +30,13 @@
           </div>
         </div>
       </div>
+      <input type="hidden" id="id" formControlName="id">
+
       <div class="form-group row">
-        <div class="offset-sm-3 col-sm-3">
-          <button type="submit" nbButton status="primary">Salvar</button>
-
+        <div class=" col-md-6">
+          <button type="submit" class="salvar" nbButton status="primary">Salvar</button>
         </div>
-        <div class=" col-sm-3">
-
+        <div class=" col-md-6">
           <button nbButton hero (click)="dismiss()" status="danger">Fechar</button>
         </div>
       </div>
