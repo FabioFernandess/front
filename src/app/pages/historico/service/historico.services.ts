@@ -15,17 +15,23 @@ export class HistoricoService {
 
   // Headers
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*','Referrer-Policy': 'no-referrer' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Referrer-Policy': 'no-referrer' })
   }
 
   // Obtem historico pela api
   getHistorico(id): Observable<any> {
-    return this.httpClient.get<any>(this.url+"buscarHistorico/"+id)
+    return this.httpClient.get<any>(this.url + "buscarHistorico/" + id)
       .pipe(
-        
+
         catchError(this.handleError))
   }
 
+  // Envia dados para salvar na api
+  getArquivo(id): Observable<any> {
+    return this.httpClient.post<any>(this.url + "getArquivo", { id: id })
+      .pipe(
+        catchError(this.handleError))
+  }
 
 
   // Manipulação de erros

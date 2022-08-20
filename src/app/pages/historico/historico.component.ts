@@ -71,11 +71,10 @@ export class HistoricoComponent {
 
 
   onCustomAction(event) {
-    console.log(event.action)
 
     this.dialogService.open(ChartDialogComponent, {
       context: {
-        title: '22/03/2022 14:54:00 - Fresadora 1',
+        idAnalise: event.data.id,
       },
     });
   }
