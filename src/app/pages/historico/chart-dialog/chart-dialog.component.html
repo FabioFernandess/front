@@ -1,7 +1,19 @@
-<nb-card>
+<nb-card *ngIf="status != 'E'">
   <nb-card-header>{{ title }}</nb-card-header>
   <nb-card-body>
+
     <chart type="line" [data]="data" [options]="options" style="height:100%; width:100%"> </chart>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton hero status="primary" (click)="dismiss()">Fechar</button>
+  </nb-card-footer>
+</nb-card>
+
+<nb-card *ngIf="status == 'E'" style="height: auto !important;">
+  <nb-card-header>{{ title }}</nb-card-header>
+  <nb-card-body>
+
+    <div *ngIf="status == 'E'">A variável de potência ativa não foi encontrada no arquivo gerado!</div>
   </nb-card-body>
   <nb-card-footer>
     <button nbButton hero status="primary" (click)="dismiss()">Fechar</button>

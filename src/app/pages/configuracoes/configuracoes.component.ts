@@ -47,6 +47,10 @@ export class ConfiguracoesComponent {
         title: 'Valor',
         type: 'integer',
       },
+      variavel: {
+        title: 'Variável de Potência Ativa',
+        type: 'string',
+      },
     },
   };
 
@@ -61,7 +65,6 @@ export class ConfiguracoesComponent {
   ngOnInit() {
     this.getLista();
   }
-
 
   getLista() {
     this.configuracoesService.getLista().subscribe((analises: any[]) => {

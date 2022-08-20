@@ -30,6 +30,19 @@
           </div>
         </div>
       </div>
+
+      <div class="form-group row">
+        <label for="variavel" class="label col-sm-3 form-control-label">Variável de Potência Ativa</label>
+        <div class="col-sm-9">
+          <input type="text" nbInput fullWidth id="variavel" placeholder="Nome" formControlName="variavel">
+          <div *ngIf="submit && form.controls['variavel'].invalid && form.controls['variavel'].touched"
+            class="alert alert-danger">
+            <div *ngIf="submit && form.controls['variavel'].errors.required">
+              Campo Obrigatório
+            </div>
+          </div>
+        </div>
+      </div>
       <input type="hidden" id="id" formControlName="id">
 
       <div class="form-group row">

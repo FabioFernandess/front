@@ -4,7 +4,8 @@
       <nb-card-header>
         <nb-icon *ngIf="fresadora.status == 'O'" icon="checkmark-circle-2-outline" pack="eva" style="font-size:7rem;color: #339900;"></nb-icon>
         <nb-icon *ngIf="fresadora.status == null" icon="close-square-outline" pack="eva" style="font-size:7rem;color: #797979;"></nb-icon>
-        <nb-icon *ngIf="fresadora.status == 'F'"icon="alert-triangle-outline" pack="eva" style="font-size:7rem;color: #cc3300;"></nb-icon>
+        <nb-icon *ngIf="fresadora.status == 'F'"icon="alert-triangle-outline" pack="eva" style="font-size:7rem;color: #e9e51d;"></nb-icon>
+        <nb-icon *ngIf="fresadora.status == 'E'"icon="close-circle-outline" pack="eva" style="font-size:7rem;color: #cc0000;"></nb-icon>
 
       </nb-card-header>
       <nb-card-body>

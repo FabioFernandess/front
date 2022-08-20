@@ -23,12 +23,13 @@ export class ModalNovoComponent {
   nomeFresadoraEdit:string;
 
   constructor(protected ref: NbDialogRef<ModalNovoComponent>, private theme: NbThemeService, private fb: FormBuilder, private configuracoesService: ConfiguracoesService, private toastrService: NbToastrService) {
-    this.data = { id: '', nome: '', valor: '' };
+    this.data = { id: '', nome: '', valor: '',variavel: 'f6' };
   }
   myForm() {
     this.form = this.fb.group({
       id: [this.data.id],
       nome: [this.data.nome, Validators.required],
+      variavel: [this.data.variavel, Validators.required],
       valor: [this.data.valor, Validators.compose([Validators.required, Validators.pattern("[1-9]\\d*")])]
     });
   }
