@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router"
+import { Router } from "@angular/router"
 import { DashboardService } from './service/dashboard.services';
 
 @Component({
@@ -7,25 +7,31 @@ import { DashboardService } from './service/dashboard.services';
   templateUrl: './dashboard.component.html',
 })
 export class DashboardComponent {
-  
- 
+
+
   fresadoras: any[];
 
-  constructor(private router: Router,private dashboardService: DashboardService) { 
+  constructor(private router: Router, private dashboardService: DashboardService) {
   }
 
- 
+
   ngOnInit() {
     this.getFresadoras();
   }
+
 
   getFresadoras() {
     this.dashboardService.getFresadoras().subscribe((fresadoras: any[]) => {
       this.fresadoras = fresadoras;
     });
+    setTimeout(() => {
+      this.getFresadoras();
+    }, 10000);
+
   }
+
   historico(idFresadora: any) {
-    this.router.navigate(['/pages/historico'],{ queryParams: { id: idFresadora } });
+    this.router.navigate(['/pages/historico'], { queryParams: { id: idFresadora } });
   }
 }
 
